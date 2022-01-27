@@ -3,7 +3,7 @@ public:
     int singleNumber(vector<int>& nums) {
         int n = nums.size();
     
-        int tn = INT_MAX; // Count of bits in each place if divisible by 3 will be on otherwise off.
+        int tn; // Count of bits in each place if divisible by 3 will be on otherwise off.
         // For negative values we need to take tn = -1
         tn = -1;
         int tnp1 = 0;   // Count of bits in each place if divisible by 3 leaves remainder 1 will be on otherwise off.
