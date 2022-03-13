@@ -1,16 +1,6 @@
 class Solution {
 public:
-    bool check(int idx, vector<int> keyIdx, int k)
-    {
-        for(int i=0; i<keyIdx.size(); i++)
-        {
-            if(abs(idx - keyIdx[i]) <= k)
-            {
-                return true;
-            }
-        }
-        return false;
-    }
+   
     vector<int> findKDistantIndices(vector<int>& nums, int key, int k) {
         
         int n = nums.size();
@@ -26,12 +16,14 @@ public:
             }
         }
         
-        for(int i=0; i<n; i++)
-        {
-            if(check(i, keyIdx, k))
-            {
+        
+        int last = 0;
+        for(int ind : keyIdx){
+            int i = max(last,ind-k);
+            for(; i <= ind+k && i < n; i++){
                 ans.push_back(i);
             }
+            last = i;
         }
         
         return ans;
