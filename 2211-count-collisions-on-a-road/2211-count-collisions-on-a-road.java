@@ -16,25 +16,20 @@ class Solution {
                 if(r > 0){
                     ans += r;
                 }
-                s++;
+                s = 1;
                 r =0;
             }
             else{
                 if(r > 0)
                 {
-                    r--;
-                    ans+=2;
+                    ans += r+1;
                     s = 1;
-                    if(r > 0)
-                    {
-                        ans += r;
-                        r = 0;
-                    }   
+                     
                 }
                 else if(s > 0){
                     ans++;
-                    r = 0;
                 }
+                r = 0;
                 
             }
         }
