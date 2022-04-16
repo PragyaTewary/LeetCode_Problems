@@ -9,28 +9,36 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+
+// sum = 8
+// currr = 6
+// root = 5
+// 5
+// 4
 class Solution {
 public:
-    TreeNode*  find(TreeNode* root, int& sum){
-        
-        if(!root){
-            return NULL;
-        }
-        
-        find(root->right, sum);
-        
-        sum += root->val;
-        root->val = sum;
-
-        find(root->left, sum);
-        
-        return root;
-    }
     TreeNode* convertBST(TreeNode* root) {
         
+        stack<TreeNode*> st;
         int sum = 0;
-        find(root, sum);
+        TreeNode* res = root;
+        while(root || !st.empty()){
+            
+            while(root){
+                
+                st.push(root);
+                root = root->right;
+            }
+            
+            TreeNode* curr = st.top();
+            st.pop();
+            
+            sum += curr->val;
+            curr->val = sum;
+            
+            root = curr->left;
+        }
         
-        return root;
+        return res;
     }
 };
